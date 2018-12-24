@@ -49,7 +49,6 @@
 (defun presentation-mode-change-slide (n)
   "Changes to a slide N positions from the current slide using `find-file'."
   (let* ((slides (directory-files default-directory nil "^.*\\.org"))
-         (slides (seq-filter (lambda (s) (not (string-prefix-p "." s))) slides))
          (slide-nr (-elem-index (file-relative-name buffer-file-name) slides))
          (new-slide-nr (+ slide-nr n)))
     (cond ((< new-slide-nr 0) (message "First slide reached."))
